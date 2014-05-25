@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-05-2014 a las 16:38:20
+-- Tiempo de generación: 25-05-2014 a las 15:56:21
 -- Versión del servidor: 5.6.16
 -- Versión de PHP: 5.5.11
 
@@ -41,11 +41,39 @@ CREATE TABLE IF NOT EXISTS `ejemplares` (
 --
 
 INSERT INTO `ejemplares` (`idEjemplar`, `idLibro`, `libroPrestado`, `localizacion`, `comentarios`) VALUES
-(1, 1, 0, 'Departamento Informatica', 'Sin comentarios'),
-(1, 24, 0, 'Departamento Informatica', 'Sin comentarios'),
-(2, 1, 0, 'Departamento Informatica', 'Sin comentarios'),
-(2, 24, 0, 'Departamento Informatica', 'Sin comentarios'),
-(3, 24, 0, 'Departamento Informatica', 'Sin comentarios');
+(1, 27, 1, 'Departamento Informatica', 'Sin comentarios'),
+(1, 32, 0, 'Departamento Informatica', 'Sin comentarios'),
+(2, 32, 1, 'Departamento Informatica', 'Sin comentarios');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `historialprestamos`
+--
+
+CREATE TABLE IF NOT EXISTS `historialprestamos` (
+  `idHistorial` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  `tituloLibro` varchar(255) NOT NULL,
+  `idLibro` int(11) NOT NULL,
+  `idEjemplar` int(11) NOT NULL,
+  `fechaInicio` date NOT NULL,
+  `fechaFin` date NOT NULL,
+  `comentarios` text NOT NULL,
+  PRIMARY KEY (`idHistorial`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Volcado de datos para la tabla `historialprestamos`
+--
+
+INSERT INTO `historialprestamos` (`idHistorial`, `nombre`, `idUsuario`, `tituloLibro`, `idLibro`, `idEjemplar`, `fechaInicio`, `fechaFin`, `comentarios`) VALUES
+(5, 'prueba', 30, 'LM', 32, 1, '2014-05-25', '2014-01-01', 'Sin comentarios'),
+(6, 'prueba', 35, 'LM', 32, 2, '2014-05-25', '2014-01-01', 'Sin comentarios'),
+(7, 'prueba', 30, 'LM', 32, 1, '2014-05-25', '2014-01-01', 'S'),
+(8, 'prueba', 30, 'LM', 32, 1, '2014-05-25', '2014-01-01', 'Sin comentarios'),
+(9, 'prueba', 35, 'LM', 32, 1, '2014-05-25', '2014-01-03', 'Sin comentarios');
 
 -- --------------------------------------------------------
 
@@ -71,8 +99,6 @@ CREATE TABLE IF NOT EXISTS `libros` (
 --
 
 INSERT INTO `libros` (`idLibro`, `tituloLibro`, `ISBN`, `autor`, `editorial`, `edicion`, `comentarios`) VALUES
-(1, 'ASO', 11111, 'IAW', 'IAW', 'IAW', 'IAW'),
-(24, 'ISO', 8888, 'ISO', 'ISO', 'ISO', 'ISO'),
 (27, 'SAD', 22222, 'SAD', 'SAD', 'SAD', 'SAD'),
 (31, 'SRI', 12345, 'SRI', 'SRI', 'SRI', 'SRI'),
 (32, 'LM', 59595, 'LM', 'LM', 'LM', 'LM');
@@ -95,14 +121,15 @@ CREATE TABLE IF NOT EXISTS `prestamos` (
   PRIMARY KEY (`idPrestamo`,`idLibro`,`idEjemplar`),
   KEY `idEjemplar` (`idEjemplar`),
   KEY `prestamos_ibfk_1` (`idLibro`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=66 ;
 
 --
 -- Volcado de datos para la tabla `prestamos`
 --
 
 INSERT INTO `prestamos` (`idPrestamo`, `idLibro`, `idEjemplar`, `idUsuario`, `fechaInicio`, `fechaFin`, `estaActivo`, `comentarios`) VALUES
-(49, 24, 3, 21, '2014-05-24', '2014-01-01', 0, '');
+(62, 32, 2, 35, '2014-05-25', '0000-00-00', 1, 'Sin comentarios'),
+(65, 27, 1, 30, '2014-05-25', '0000-00-00', 1, 'Sin comentarios');
 
 -- --------------------------------------------------------
 
@@ -138,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `clave` varchar(255) NOT NULL,
   `tipoCuenta` char(1) NOT NULL,
   PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -147,7 +174,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 INSERT INTO `usuarios` (`idUsuario`, `nombre`, `clave`, `tipoCuenta`) VALUES
 (21, 'admin', '$2y$10$deAZDNb2DlvMt54G5vi5OOV1p4TFB43ttRlCVhY.W4R/E8zW4L46i', 'A'),
 (30, 'prueba', '$2y$10$X9zDL5JmDD/IsSW10mGAuuIvYOfbhjulaGONOSKdkTQ.uN1ctgy1i', 'P'),
-(32, 'jose', '$2y$10$mTRS/CEhmwCubiEE/WrFROUzjEneEJWvlu.ZBm6lR.JQuh/fVz.HK', 'P');
+(35, 'prueba', '$2y$10$OWJxAgzUe/1RFmjlLDggVuaUuXP5lc73MgQu/IT0X2abq.wEvUd9S', 'P');
 
 --
 -- Restricciones para tablas volcadas
