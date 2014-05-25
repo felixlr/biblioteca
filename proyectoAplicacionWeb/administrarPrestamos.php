@@ -35,6 +35,7 @@
 				<table border=1px width=80% rules="rows">
 					<thead>
 						<th>Usuario</th>
+						<th>ID. Usuario</th>
 						<th>Libro</th>
 						<th>Codigo Ejemplar</th>
 						<th>Fecha Inicio Prestamo</th>
@@ -47,6 +48,7 @@
 								<?php while($fila2!=""): ?>
 									<tr>
 										<td><?php echo $fila1['nombre']; ?></td>
+										<td><?php echo $fila1['idUsuario']; ?></td>
 										<td><?php echo $fila2['tituloLibro']; ?></td>
 										<td><?php echo $fila2['idLibro'].".".$fila2['idEjemplar']; ?></td>									
 										<td><?php echo $fila2['fechaInicio']; ?></td>
