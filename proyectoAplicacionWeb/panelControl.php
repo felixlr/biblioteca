@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php if(isset($_SESSION['usuario']) && $_SESSION['tipoCuenta']=="A"): ?>
+<?php if(isset($_SESSION['usuario']) && $_SESSION['tipoCuenta']==1): ?>
 	<html>
 		<head>
 			<title>Inicio</title>
@@ -12,7 +12,6 @@
 			<a href="administrarEjemplares.php">Gestion de Ejemplares</a><br/>
 			<a href="administrarPrestamos.php">Gestion de Prestamos</a><br/>
 			<a href="administrarHistorial.php">Gestion de Historial</a><br/>
-			
 			<br/><a href="cerrarSesion.php">Cerrar Sesion</a>
 		</body>
 	</html>

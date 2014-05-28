@@ -1,15 +1,10 @@
 <?php
-	//Escribir if de validacion
-	
 	session_start();
 	
-	//Conectamos con el servidor y la BBDD correspondiente
-	function conectar(){
-		$id_conexion=@mysql_connect() or die("No se pudo establecer la conexion al servidor");
-		@mysql_select_db("test",$id_conexion) or die("La BBDD no existe");
-		return $id_conexion;
-	}
-	
+	//Incluimos la libreria con la funcion conectar
+
+	include("../includes/conectar.php");
+
 	//Obtenemos el identificador correspondiente para realizar las consultas
 	$id_conexion=conectar();
 	
@@ -20,11 +15,10 @@
 	$encontrado=FALSE;
 	$fila=mysql_fetch_array($datos);
 	while($fila!="" && !$encontrado){
-		if($fila['nombre']==$_POST['usuario'] && password_verify($_POST['clave'],$fila['clave'])){
+		if($fila['nombre']==$_POST['usuario'] && password_verify($_POST['clave'],$fila['contrasenia'])){
 			$encontrado=TRUE;
 			$_SESSION['usuario']=$_POST['usuario'];
-			$_SESSION['clave']=$_POST['clave'];
-			$_SESSION['tipoCuenta']=$fila['tipoCuenta'];
+			$_SESSION['tipoCuenta']=$fila['idTipoCuenta'];
 		}
 		else{
 			$_SESSION['mensajeLogin']="Usuario o Contrasena invalido";
@@ -34,16 +28,9 @@
 	
 	//Si lo encontramos es redirigido a la pagina principal (inicio) de lo contrario se lo redirige al login
 	if($encontrado){
-		echo '
-		<html>
-			<head>
-				<meta http-equiv="Refresh" content="0;url=principal.php">
-			</head>
-		</html>
-		';
+		header('Location:../inicio.php');
 	}
 	else {
-		header('Location:login.php');
-		//cambiar por redirect
+		header('Location:../index.php');
 	}
 ?>

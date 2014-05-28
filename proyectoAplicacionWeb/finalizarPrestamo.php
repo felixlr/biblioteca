@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php if(isset($_SESSION['usuario']) && $_SESSION['tipoCuenta']=="A"): ?>
+<?php if(isset($_SESSION['usuario']) && $_SESSION['tipoCuenta']==1): ?>
 	<html>
 		<head>
 			<title>Finalizar Prestamo</title>
@@ -13,7 +13,7 @@
 				<p>Mensaje: <?php echo $_SESSION['mensaje']; ?></p>
 				<?php unset($_SESSION['mensaje']); ?>
 			<?php endif; ?>
-			<form action="procesarFinalizarPrestamo.php" method="POST">
+			<form action="procesar/procesarFinalizarPrestamo.php" method="POST">
 				Dia:
 				<select name="dia">
 					<option value="">Elije un dia</option>
@@ -43,6 +43,4 @@
 			<?php $_SESSION['idEjemplar']=$_GET['idEjemplar']; ?>
 		</body>
 	</html>
-<?php else: ?>
-	<?php header('Location:index.php'); ?>
-<?php endif; ?>
+<?php else: header('Location:inicio.php'); endif; ?>
