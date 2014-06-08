@@ -1,0 +1,147 @@
+/*CSS Header*/
+.container{
+	width: 1200px !important;
+}
+
+/*Ubicar corretamente el boton*/
+.rowHeader{
+	padding-top:40px;
+}
+
+.header{
+	background-color: #FAFAFA;
+	height: 100px;
+}
+
+.barraDecorativa{
+	height: 10px;
+	background-color: #01A9DB;
+}
+
+.fullwidth{
+	width: 100%;
+}
+
+.linea{
+	height: 2px;
+	background-color: #D8D8D8;
+}
+
+.botonMenuDer{
+	float:right;
+	width: 28%; /*Alinear el boton con el contenido*/
+}
+
+.columna{
+	background-color: lime;
+	border:solid 1px red;
+}
+/*FIN CSS Header */
+
+/****************************************************/
+
+/*CSS Contenido*/
+th, td{
+	text-align: center;
+}
+
+.fila{
+	padding: 10px 0px;
+}
+
+.filaFooter{
+	padding: 20px 0px;
+}
+
+.categoriasPanel{
+	text-align: center;
+	border: solid 1px #E6E6E6;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.tituloSeccion{
+	text-align: center;
+	color: #58D3F7;
+	margin: 0px;
+	text-shadow: 1px 1px 1px #000;
+}
+
+.tituloBotonCategoria{
+	color: #6E6E6E;
+	text-shadow: 0.5px 0.5px 0.5px #58D3F7;
+}
+
+.barraDecorativaCategoria{
+	height: 10px;
+	background-color: #01A9DB;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.contenido{	
+  background-color: #F2F2F2;
+}
+
+.botonFormulario{
+	width:100%;
+}
+
+.seccionIzq{
+	padding: 0px 10px 0px 15px;
+}
+
+.seccionDer{
+	/*padding-left: 0px;*/
+}
+/*FIN CSS Contenido*/
+
+/*CSS FOOTER*/
+
+/****************************/
+/*STICKY FOOTER*/
+html {
+  position: relative;
+  min-height: 100%;
+  background-color: #F2F2F2;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #01A9DB;
+}
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.marco{
+	border: solid 1px blue;
+}
+
+.container {
+  width: auto;
+  max-width: 1200px;
+  /*padding: 0 15px;*/
+}
+
+.container .text-muted {
+  /*margin: 20px 0;*/
+}
+/*FIN STICKY FOOTER*/
+/******************************/
+
+.enlacesFooter a{
+	color: #424242;
+}
+
+/*FIN CSS FOOTER*/

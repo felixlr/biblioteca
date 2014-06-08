@@ -10,14 +10,14 @@
 			//Obtengo el historial de prestamos de cada Usuario de la tabla historialPrestamos
 			$consulta="SELECT * FROM historialprestamos WHERE idUsuario='".$fila1['idUsuario']."' ORDER BY fechaFin DESC";
 			$datos2=mysql_query($consulta,$id_conexion);
-			echo '<table border=1px width=80% rules="rows">
+			echo '<table class="table table-bordered table-hover table-condensed">
 					<thead>
 						<th>Usuario</th>
 						<th>ID. Usuario</th>
 						<th>Libro</th>
 						<th>Codigo Ejemplar</th>
-						<th>Fecha Inicio Prestamo</th>
-						<th>Fecha Fin Prestamo</th>
+						<th>Inicio de Prestamo</th>
+						<th>Fin de Prestamo</th>
 						<th>Comentarios</th>
 						<th>Accion</th>
 					</thead>
@@ -33,7 +33,7 @@
 						<td>'.$fila2['fechaInicio'].'</td>
 						<td>'.$fila2['fechaFin'].'</td>
 						<td>'.$fila2['comentariosHistorial'].'</td>
-						<td><a href="procesar/procesarEliminarPrestamo.php?idHistorial='.$fila2['idHistorial'].'">Eliminar del historial</a></td>
+						<td><a class="btn btn-danger btn-sm" href="procesar/procesarEliminarPrestamo.php?idHistorial='.$fila2['idHistorial'].'">Eliminar</a></td>
 					</tr>
 				';
 			}

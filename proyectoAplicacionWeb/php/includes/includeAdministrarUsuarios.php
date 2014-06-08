@@ -5,21 +5,33 @@
 	$datos=mysql_query($consulta,$idConexion);
 
 	echo '
-		<table border=1px width=80% rules="rows">
+		<table class="table table-bordered table-hover table-condensed">
 			<thead>
 				<th>Nombre</th>
+				<th>DNI</th>
 				<th>Tipo de Cuenta</th>
-				<th colspan="2">Acciones</th>
+				<th>Teléfono</th>
+				<th>Móvil</th>
+				<th>Correo Electrónico</th>
+				<th>Año</th>
+				<th>Acciones</th>
 			</thead>
-			<tbody align="center">
+			<tbody>
 	';
 	while($fila=mysql_fetch_array($datos)){
 		echo '
 				<tr>
 					<td>'.$fila['nombre'].'</td>
+					<td>'.$fila['dni'].'</td>
 					<td>'.$fila['descripcionCuenta'].'</td>
-					<td><a href="edicionUsuario.php?idUsuario='.$fila['idUsuario'].'">Editar Usuario</a></td>
-					<td><a href="procesar/procesarEliminarUsuario.php?idUsuario='.$fila['idUsuario'].'">Eliminar Usuario</a></td>
+					<td>'.$fila['telefono'].'</td>
+					<td>'.$fila['movil'].'</td>
+					<td>'.$fila['email'].'</td>
+					<td>'.$fila['anio'].'</td>
+					<td>
+						<a class="btn btn-info btn-sm" role="button" href="edicionUsuario.php?idUsuario='.$fila['idUsuario'].'">Editar</a>
+						<a class="btn btn-danger btn-sm" role="button" href="procesar/procesarEliminarUsuario.php?idUsuario='.$fila['idUsuario'].'">Eliminar</a>
+					</td>					
 				</tr>
 		';
 	}

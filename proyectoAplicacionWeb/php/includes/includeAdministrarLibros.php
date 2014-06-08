@@ -5,18 +5,18 @@
 	$datos=mysql_query($consulta,$id_conexion);				
 	
 	echo '
-		<table border=1px width=80% rules="rows">
-			<tbody align="center">
-				<tr>
-					<td>Titulo Libro</td>
-					<td>ISBN</td>
-					<td>Autor</td>
-					<td>Editorial</td>
-					<td>Edicion</td>
-					<td>Anio Publicacion</td>
-					<td>Comentarios</td>
-					<td colspan="2">Acciones</td>
-				</tr>
+		<table class="table table-bordered table-hover table-condensed">
+			<thead>
+				<th>Titulo Libro</th>
+				<th>ISBN</th>
+				<th>Autor</th>
+				<th>Editorial</th>
+				<th>Edicion</th>
+				<th>Anio Publicacion</th>
+				<th>Comentarios</th>
+				<th colspan="2">Acciones</th>
+			</thead>
+			<tbody>
 	';
 	while($fila=$fila=mysql_fetch_array($datos)){
 		echo '
@@ -28,13 +28,14 @@
 				<td>'.$fila['edicion'].'</td>
 				<td>'.$fila['anioPublicacion'].'</td>
 				<td>'.$fila['comentariosLibros'].'</td>
-				<td><a href="edicionLibro.php?idLibro='.$fila['idLibro'].'">Editar Libro</a></td>
-				<td><a href="procesar/procesarEliminarLibro.php?idLibro='.$fila['idLibro'].'">Eliminar Libro</a></td>
+				<td>
+					<a class="btn btn-info btn-sm" href="edicionLibro.php?idLibro='.$fila['idLibro'].'">Editar</a>
+					<a class="btn btn-danger btn-sm" href="procesar/procesarEliminarLibro.php?idLibro='.$fila['idLibro'].'">Eliminar</a>
+				</td>				
 			</tr>
 		';
 	}
-	echo '
-			</tbody>
+	echo '	</tbody>
 		</table>
 	';
 ?>

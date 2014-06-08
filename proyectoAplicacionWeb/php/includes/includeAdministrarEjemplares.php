@@ -9,15 +9,15 @@
 		$datos2=mysql_query($consulta,$id_conexion);
 		if(mysql_num_rows($datos2)!=0){
 			echo '
-				<table border=1px width=80% rules="rows">
+				<table class="table table-bordered table-hover table-condensed">
 					<thead>
 						<th>Libro</th>
-						<th>Codigo Ejemplar</th>
+						<th>Cod. Ejemplar</th>
 						<th>Localizacion</th>
 						<th>Comentarios</th>
-						<th colspan="2">Acciones</th>
+						<th>Acciones</th>
 					</thead>
-					<tbody align="center">
+					<tbody>
 			';
 			while($fila2=mysql_fetch_array($datos2)){
 				echo '
@@ -26,8 +26,10 @@
 						<td>'.$fila2['idLibro'].".".$fila2['idEjemplar'].'</td>
 						<td>'.$fila2['localizacion'].'</td>
 						<td>'.$fila2['comentariosEjemplares'].'</td>
-						<td><a href="edicionEjemplar.php?idLibro='.$fila2['idLibro'].'&idEjemplar='.$fila2['idEjemplar'].'">Editar Ejemplar</a></td>
-						<td><a href="procesar/procesarEliminarEjemplar.php?idLibro='.$fila2['idLibro'].'&idEjemplar='.$fila2['idEjemplar'].'">Eliminar Ejemplar</a></td>
+						<td>
+							<a class="btn btn-info btn-sm" href="edicionEjemplar.php?idLibro='.$fila2['idLibro'].'&idEjemplar='.$fila2['idEjemplar'].'">Editar</a>
+							<a class="btn btn-danger btn-sm" href="procesar/procesarEliminarEjemplar.php?idLibro='.$fila2['idLibro'].'&idEjemplar='.$fila2['idEjemplar'].'">Eliminar</a>
+						</td>
 					</tr>
 			';
 			}
