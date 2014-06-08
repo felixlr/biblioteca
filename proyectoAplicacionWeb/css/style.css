@@ -3,14 +3,56 @@
 	width: 1200px !important;
 }
 
-/*Ubicar corretamente el boton*/
-.rowHeader{
-	padding-top:40px;
+#header{
+	background-color: #FFF;
+	height: 80px;
 }
 
-.header{
-	background-color: #FAFAFA;
-	height: 100px;
+#mainLogo{
+	margin-left: 60px;
+}
+
+.textoLogo{
+	text-align: center;
+	font-weight: bold;
+	position: absolute;
+	top: 20px;
+	left: 125px;
+}
+
+.textoLogo p{	
+	color: #848484;
+	margin: 0px;
+	padding: 0px;
+}
+
+#mainMenu{
+	float: right;
+	margin-top:23px;
+}
+
+#mainMenu a:hover{
+	color: #6db4d0;
+}
+
+#mainMenu.nav-pills>li.active>a,
+#mainMenu.nav-pills>li.active>a:hover,
+#mainMenu.nav-pills>li.active>a:focus,
+#mainMenu.nav-pills>li>a:hover{
+	background: none;
+	color: #6db4d0;
+}
+
+#mainMenu.nav-pills>li.active>a,
+#mainMenu.nav-pills>li.active>a:hover,
+#mainMenu.nav-pills>li.active>a:focus{
+	background: none;
+}
+
+#mainMenu.nav .open>a,
+#mainMenu.nav .open>a:hover,
+#mainMenu.nav .open>a:focus{
+	background: none;
 }
 
 .barraDecorativa{
@@ -33,9 +75,15 @@
 }
 
 .columna{
-	background-color: lime;
+	background-color: blue;
 	border:solid 1px red;
 }
+
+.iconoUserPanel{
+	color: #A4A4A4;
+	font-weight: 1.3em;
+}
+
 /*FIN CSS Header */
 
 /****************************************************/
@@ -80,7 +128,7 @@ th, td{
 }
 
 .contenido{	
-  background-color: #F2F2F2;
+  background-color: #FAFAFA;
 }
 
 .botonFormulario{
@@ -103,7 +151,7 @@ th, td{
 html {
   position: relative;
   min-height: 100%;
-  background-color: #F2F2F2;
+  background-color: #FAFAFA;
 }
 
 body {
@@ -116,8 +164,9 @@ body {
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 60px;
+  height: 62px;
   background-color: #01A9DB;
+  border-top: solid 2px #D8D8D8;
 }
 
 /* Custom page CSS

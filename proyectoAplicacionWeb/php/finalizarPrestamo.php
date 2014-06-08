@@ -20,29 +20,7 @@
 		</head>
 		<body>
 			<div class="fullwidth">
-				<header class="header">
-					<div class="container">
-						<div class="row">
-							<div class="col-xs-6">
-								<a href="panelControl.php"><img src="../img/logo.png" alt="Logo" class="logo"></a>
-							</div>
-							<div class="col-xs-6">
-								<div class="dropdown botonMenuDer rowHeader">
-									<button style="width:100%;" class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-										<span class="glyphicon glyphicon-user"></span> Administrador
-										<span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
-										<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Perfil</a></li>
-										<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Enlace Prueba</a></li>								
-										<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Front-End</a></li>								
-										<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Cerrar Sesión</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</header>
+				<?php include('includes/header.php'); ?>
 				<section class="contenido">
 					<div class="container">
 						<div class="row fila">
@@ -95,6 +73,7 @@
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			<!-- Include all compiled plugins (below), or include individual files as needed -->
 			<script src="../js/bootstrap.min.js"></script>
+			<script src="../js/bootstrap-hover-dropdown.min.js"></script>
 		</body>
 	</html>
 <?php else: header('Location:inicio.php'); endif; ?>
