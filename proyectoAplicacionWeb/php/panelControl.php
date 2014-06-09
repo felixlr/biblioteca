@@ -20,53 +20,100 @@
 	</head>
 	<body>
 		<div class="fullwidth">
-			<?php include('includes/header.php'); ?>
+			<div class="barraDecorativa"></div>
+			<header id="header">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-4">
+							<a href="panelControl.php">
+								<div id="mainLogo">
+									<img src="../img/logo.gif" alt="Logo" class="logo">
+								</div>
+								<div class="textoLogo">
+									<p>Departamento de Informática</p>
+									<p>IES Lope de Vega</p>
+								</div>
+							</a>
+						</div>
+						<div class="col-xs-8">
+							
+						</div>
+					</div>
+				</div>
+			</header>
+			<div class="linea"></div>
 			<section class="contenido">
 				<div class="container">
-					<div class="row fila">
-						<h2 class="tituloSeccion">Panel de Control</h2>
-					</div>
-					<div class="row fila">
-						<div class="col-xs-4">
-							<div class="categoriasPanel">
-								<div class="barraDecorativaCategoria"></div>
-								<br/>
-								<a href="administrarUsuarios.php"><img src="../img/panelAdministracion/administrarUsuarios.png" alt="Usuarios">
-								<p class="tituloBotonCategoria">Administrar Usuarios</p></a>
+					<div class="row">
+						<div class="col-xs-10 col-xs-offset-1">
+							<div class="row fila">
+								<div class="col-xs-12">
+									<h2 class="tituloSeccion">Panel de Control</h2>
+								</div>
 							</div>
-						</div>
-						<div class="col-xs-4">
-							<div class="categoriasPanel">
-								<div class="barraDecorativaCategoria"></div>
-								<br/>
-								<a href="administrarLibros.php"><img src="../img/panelAdministracion/administrarLibros.png" alt="Libros">
-								<p class="tituloBotonCategoria">Administrar Libros</p></a>
+							<div class="row fila">
+								<div class="col-xs-4">
+									<a href="administrarUsuarios.php">
+										<div class="categoriasPanel">
+											<div class="barraDecorativaCategoria"></div>
+											<br/>
+											<img src="../img/panelAdministracion/administrarUsuarios.png" alt="Usuarios">
+											<p class="tituloBotonCategoria">Administrar Usuarios</p>
+										</div>
+									</a>
+								</div>
+								<div class="col-xs-4">
+									<a href="administrarLibros.php">
+										<div class="categoriasPanel">
+											<div class="barraDecorativaCategoria"></div>
+											<br/>
+											<img src="../img/panelAdministracion/administrarLibros.png" alt="Libros">
+											<p class="tituloBotonCategoria">Administrar Libros</p>
+										</div>
+									</a>
+								</div>
+								<div class="col-xs-4">
+									<a href="administrarEjemplares.php">
+										<div class="categoriasPanel">
+											<div class="barraDecorativaCategoria"></div>
+											<br/>
+											<img src="../img/panelAdministracion/administrarEjemplares.png" alt="Ejemplares">
+											<p class="tituloBotonCategoria">Administrar Ejemplares</p>
+										</div>
+									</a>
+								</div>
 							</div>
-						</div>
-						<div class="col-xs-4">
-							<div class="categoriasPanel">
-								<div class="barraDecorativaCategoria"></div>
-								<br/>
-								<a href="administrarEjemplares.php"><img src="../img/panelAdministracion/administrarEjemplares.png" alt="Ejemplares">
-								<p class="tituloBotonCategoria">Administrar Ejemplares</p></a>
-							</div>
-						</div>
-					</div>
-					<div class="row fila">
-						<div class="col-xs-4 col-xs-offset-2">
-							<div class="categoriasPanel">
-								<div class="barraDecorativaCategoria"></div>
-								<br/>
-								<a href="administrarPrestamos.php"><img src="../img/panelAdministracion/administrarPrestamos.png" alt="Prestamos">
-								<p class="tituloBotonCategoria">Administrar Prestamos</p></a>
-							</div>
-						</div>
-						<div class="col-xs-4">
-							<div class="categoriasPanel">
-								<div class="barraDecorativaCategoria"></div>
-								<br/>
-								<a href="administrarHistorial.php"><img src="../img/panelAdministracion/administrarHistorial4.png" alt="Historial">
-								<p class="tituloBotonCategoria">Historial</p></a>
+							<div class="row fila">
+								<div class="col-xs-4">
+									<a href="administrarPrestamos.php">
+										<div class="categoriasPanel">
+											<div class="barraDecorativaCategoria"></div>
+											<br/>
+											<img src="../img/panelAdministracion/administrarPrestamos.png" alt="Prestamos">
+											<p class="tituloBotonCategoria">Administrar Prestamos</p>
+										</div>
+									</a>
+								</div>
+								<div class="col-xs-4">
+									<a href="administrarHistorial.php">
+										<div class="categoriasPanel">
+											<div class="barraDecorativaCategoria"></div>
+											<br/>
+											<img src="../img/panelAdministracion/administrarHistorial4.png" alt="Historial">
+											<p class="tituloBotonCategoria">Historial</p>
+										</div>
+									</a>
+								</div>
+								<div class="col-xs-4">
+									<a href="administrarPrestamos.php">
+										<div class="categoriasPanel">
+											<div class="barraDecorativaCategoria"></div>
+											<br/>
+											<img src="../img/panelAdministracion/administrarMensajes.png" alt="Prestamos">
+											<p class="tituloBotonCategoria">Mensajes</p>
+										</div>
+									</a>
+								</div>
 							</div>
 						</div>
 					</div>

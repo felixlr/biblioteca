@@ -15,6 +15,7 @@
 			</div>
 			<div class="col-xs-8">
 				<ul id="mainMenu" class="nav nav-pills">
+					<li><a href="panelControl.php">Panel de Control</a></li>
 					<li><a href="administrarUsuarios.php">Usuarios</a></li>
 					<li><a href="administrarLibros.php">Libros</a></li>
 					<li><a href="administrarEjemplares.php">Ejemplares</a></li>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-05-2014 a las 06:40:47
+-- Tiempo de generación: 09-06-2014 a las 22:00:00
 -- Versión del servidor: 5.6.16
 -- Versión de PHP: 5.5.11
 
@@ -34,18 +34,19 @@ CREATE TABLE IF NOT EXISTS `ejemplares` (
   `comentariosEjemplares` text,
   PRIMARY KEY (`idEjemplar`,`idLibro`),
   KEY `idLibro` (`idLibro`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `ejemplares`
 --
 
 INSERT INTO `ejemplares` (`idEjemplar`, `idLibro`, `estaPrestado`, `localizacion`, `comentariosEjemplares`) VALUES
-(1, 1, 0, 'Departamento Informatica', 'Ejemplar nuevo.'),
-(1, 2, 0, 'Departamento Informatica', 'Nuevo ejemplar'),
+(1, 1, 1, 'Departamento Informatica', 'Ejemplar nuevo.'),
+(1, 2, 1, 'Departamento Informatica', 'Nuevo ejemplar'),
 (1, 3, 1, 'Departamento Informatica', 'Nuevo ejemplar'),
 (2, 1, 0, 'Departamento Informatica', 'Nuevo ejemplar'),
-(2, 3, 0, 'Departamento Informatica', 'Nuevo ejemplar');
+(2, 3, 0, 'Departamento Informatica', 'Nuevo ejemplar'),
+(5, 1, 0, 'Departamento de Informatica', 'Libro');
 
 -- --------------------------------------------------------
 
@@ -64,15 +65,15 @@ CREATE TABLE IF NOT EXISTS `historialprestamos` (
   `fechaFin` date NOT NULL,
   `comentariosHistorial` text,
   PRIMARY KEY (`idHistorial`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `historialprestamos`
 --
 
 INSERT INTO `historialprestamos` (`idHistorial`, `nombre`, `idUsuario`, `tituloLibro`, `idLibro`, `idEjemplar`, `fechaInicio`, `fechaFin`, `comentariosHistorial`) VALUES
-(1, 'pepe', 7, 'ASO', 2, 1, '2014-05-27', '2014-01-01', 'Sin comentarios'),
-(4, 'admin', 1, 'IAW', 1, 1, '2014-05-27', '2014-01-03', 'Sin comentarios');
+(4, 'admin', 1, 'IAW', 1, 1, '2014-05-27', '2014-01-03', 'Sin comentarios'),
+(5, 'admin', 1, 'IAW', 1, 2, '2014-06-01', '2014-02-01', '');
 
 -- --------------------------------------------------------
 
@@ -87,22 +88,23 @@ CREATE TABLE IF NOT EXISTS `libros` (
   `autor` varchar(255) DEFAULT NULL,
   `editorial` varchar(255) DEFAULT NULL,
   `edicion` varchar(255) DEFAULT NULL,
-  `anioPublicacion` varchar(255) DEFAULT NULL,
+  `anioPublicacion` int(11) DEFAULT NULL,
   `comentariosLibros` text,
   `fotoLibro` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idLibro`),
   UNIQUE KEY `tituloLibro` (`tituloLibro`),
   UNIQUE KEY `ISBN` (`ISBN`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Volcado de datos para la tabla `libros`
 --
 
 INSERT INTO `libros` (`idLibro`, `tituloLibro`, `ISBN`, `autor`, `editorial`, `edicion`, `anioPublicacion`, `comentariosLibros`, `fotoLibro`) VALUES
-(1, 'IAW', '1', 'IAW', 'IAW', 'Primera', '2000', 'IAW', NULL),
-(2, 'ASO', '2', 'ASO', 'ASO', 'Primera', '2005', 'ASO', NULL),
-(3, 'ISO', '0000000000003', 'ISO', 'ISO', 'Primera', '2010', 'ISO', NULL);
+(1, 'IAW', '7897897897897', 'IAW', 'IAW', 'Primera', 2000, 'IAW', ''),
+(2, 'ASO', '1234567889', 'ASO', 'ASO', 'Primera', 2005, 'ASO', ''),
+(3, 'ISO', '0000000000003', 'ISO', 'ISO', 'Primera', 2010, 'ISO', NULL),
+(5, 'Servicios de Red E Internet', '0000000000005', 'SRI', 'SRI', 'Tercera', 2010, 'SRI\r\n', NULL);
 
 -- --------------------------------------------------------
 
@@ -122,14 +124,16 @@ CREATE TABLE IF NOT EXISTS `prestamos` (
   PRIMARY KEY (`idPrestamo`,`idLibro`,`idEjemplar`),
   KEY `idLibro` (`idLibro`,`idEjemplar`),
   KEY `idUsuario` (`idUsuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Volcado de datos para la tabla `prestamos`
 --
 
 INSERT INTO `prestamos` (`idPrestamo`, `idLibro`, `idEjemplar`, `idUsuario`, `fechaInicio`, `fechaFin`, `estaActivo`, `comentariosPrestamos`) VALUES
-(5, 3, 1, 8, '2014-05-27', NULL, 1, 'Sin comentarios');
+(5, 3, 1, 8, '2014-05-27', NULL, 1, 'Sin comentarios'),
+(6, 1, 1, 8, '2014-06-01', NULL, 1, ''),
+(8, 2, 1, 1, '2014-06-01', NULL, 1, '');
 
 -- --------------------------------------------------------
 
@@ -170,16 +174,16 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   PRIMARY KEY (`idUsuario`),
   UNIQUE KEY `dni` (`dni`),
   KEY `idTipoCuenta` (`idTipoCuenta`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `dni`, `contrasenia`, `nombre`, `telefono`, `movil`, `email`, `idTipoCuenta`, `anio`) VALUES
-(1, '00000000A', '$2y$10$deAZDNb2DlvMt54G5vi5OOV1p4TFB43ttRlCVhY.W4R/E8zW4L46i', 'admin', NULL, NULL, NULL, 1, NULL),
-(7, '00000000B', '$2y$10$lqHfE1T27XdZCYhBCC.Gg.PAPE1kCvjd6pbqtrGmUt4QzMQr0SaG2', 'pepe', NULL, NULL, NULL, 2, NULL),
-(8, '00000000C', '$2y$10$UCD/rvBT7N5KdF8HL94kKuBXdoXJTgWrCR6p4qrcIhgymwPtmY0F.', 'lucas', NULL, NULL, NULL, 2, NULL);
+(1, '54246933F', '$2y$10$y3AcSjt4nTOyInJEQN4t4.sMcWHXn.4n.4mdjM3ECjgM3hBvKmq32', 'admin', 911111111, 600000000, 'prueba@prueba.com', 1, 2014),
+(8, '89209629N', '$2y$10$UCD/rvBT7N5KdF8HL94kKuBXdoXJTgWrCR6p4qrcIhgymwPtmY0F.', 'lucas', 911111111, 600000000, 'ejemplo@gmail.com', 2, 2014),
+(17, '51230044M', '$2y$10$ivsv.yFAw7B.zApgfqfiqu22a5vhcKTxckPGWfPFop9CFwJnZGfJ2', 'Jorge', 911111111, 655555555, 'ejemplo@gmail.com', 2, 2014);
 
 --
 -- Restricciones para tablas volcadas

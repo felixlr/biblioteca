@@ -33,11 +33,11 @@
 			$idConexion=conectar();
 			$consulta="INSERT INTO usuarios VALUES (null,'".$_POST['dni']."','".password_hash($_POST['contrasenia'],1)."','".$_POST['nombre']."',".$_POST['telefono'].",".$_POST['movil'].",'".$_POST['email']."',".$_POST['tipoDeCuenta'].",".$_POST['anio'].")";
 			if(mysql_query($consulta,$idConexion)){
-			$_SESSION['mensaje']="Usuario insertado correctamente";
-			header('Location:../administrarUsuarios.php');
+				$_SESSION['mensaje']="Usuario insertado correctamente";
+				header('Location:../administrarUsuarios.php');
 			}
 			else{
-				$_SESSION['mensaje']=procesarErrores(mysql_errno($idConexion));
+				$_SESSION['mensaje']=procesarErrores(mysql_errno($idConexion),1);
 				header('Location:../nuevoUsuario.php');
 				//$_SESSION['idError']=mysql_errno($idConexion);
 			}
