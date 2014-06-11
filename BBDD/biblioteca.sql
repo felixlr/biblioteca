@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-06-2014 a las 22:00:00
+-- Tiempo de generación: 11-06-2014 a las 16:23:11
 -- Versión del servidor: 5.6.16
 -- Versión de PHP: 5.5.11
 
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `libros` (
   PRIMARY KEY (`idLibro`),
   UNIQUE KEY `tituloLibro` (`tituloLibro`),
   UNIQUE KEY `ISBN` (`ISBN`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `libros`
@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `prestamos` (
   PRIMARY KEY (`idPrestamo`,`idLibro`,`idEjemplar`),
   KEY `idLibro` (`idLibro`,`idEjemplar`),
   KEY `idUsuario` (`idUsuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Volcado de datos para la tabla `prestamos`
@@ -166,24 +166,24 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `dni` char(9) NOT NULL,
   `contrasenia` varchar(255) NOT NULL,
   `nombre` varchar(20) NOT NULL,
-  `telefono` int(11) DEFAULT NULL,
-  `movil` int(11) DEFAULT NULL,
+  `telefono` varchar(9) DEFAULT NULL,
+  `movil` varchar(9) DEFAULT NULL,
   `email` varchar(20) DEFAULT NULL,
   `idTipoCuenta` int(11) NOT NULL,
-  `anio` year(4) DEFAULT NULL,
+  `anio` varchar(4) DEFAULT NULL,
   PRIMARY KEY (`idUsuario`),
   UNIQUE KEY `dni` (`dni`),
   KEY `idTipoCuenta` (`idTipoCuenta`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `dni`, `contrasenia`, `nombre`, `telefono`, `movil`, `email`, `idTipoCuenta`, `anio`) VALUES
-(1, '54246933F', '$2y$10$y3AcSjt4nTOyInJEQN4t4.sMcWHXn.4n.4mdjM3ECjgM3hBvKmq32', 'admin', 911111111, 600000000, 'prueba@prueba.com', 1, 2014),
-(8, '89209629N', '$2y$10$UCD/rvBT7N5KdF8HL94kKuBXdoXJTgWrCR6p4qrcIhgymwPtmY0F.', 'lucas', 911111111, 600000000, 'ejemplo@gmail.com', 2, 2014),
-(17, '51230044M', '$2y$10$ivsv.yFAw7B.zApgfqfiqu22a5vhcKTxckPGWfPFop9CFwJnZGfJ2', 'Jorge', 911111111, 655555555, 'ejemplo@gmail.com', 2, 2014);
+(1, '54246933F', '$2y$10$aA0po.AC/x3vCqLm9s2i2O7dF8..m7CQLfTws1uROvEfkAYd0Bt5a', 'admin', '911111111', '600000000', 'prueba@prueba.com', 1, '2014'),
+(8, '89209629N', '$2y$10$UCD/rvBT7N5KdF8HL94kKuBXdoXJTgWrCR6p4qrcIhgymwPtmY0F.', 'lucas', '911111111', '600000000', 'ejemplo@gmail.com', 2, '2014'),
+(13, '89833768T', '$2y$10$wUHNbiZx9ZVa5QcBuKOpjuHFyreLPz9ZGK4ROrFFzyp1gJ8itYZLm', 'Luis', '911111111', '600000000', 'ejemplo@gmail.com', 2, '2014');
 
 --
 -- Restricciones para tablas volcadas

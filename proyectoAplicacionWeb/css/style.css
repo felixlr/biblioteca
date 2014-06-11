@@ -12,6 +12,13 @@
 	margin-left: 60px;
 }
 
+/*Prueba Botones*/
+.menu{
+	width: 29.5%;
+	margin-right: 16.3%;
+	float: right;
+}
+
 .textoLogo{
 	text-align: center;
 	font-weight: bold;

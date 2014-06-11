@@ -26,12 +26,14 @@
 			}
 		}
 	}
-	
 
 	if(!$faltanCamposObligatorios){
-		if(validarCampoLetras($_POST['nombre']) AND validarDNI($_POST['dni']) AND validarContrasenia($_POST['contrasenia'],$_POST['contraseniaConf']) AND validarCorreo($_POST['email']) AND validarTelefonoMovil($_POST['telefono']) AND validarTelefonoMovil($_POST['movil']) AND validarAnio($_POST['anio'])){
+		$indicesNoValidos=array();
+		camposNoValidosUsuario($indicesNoValidos);
+
+		if(empty($indicesNoValidos)){
 			$idConexion=conectar();
-			$consulta="INSERT INTO usuarios VALUES (null,'".$_POST['dni']."','".password_hash($_POST['contrasenia'],1)."','".$_POST['nombre']."',".$_POST['telefono'].",".$_POST['movil'].",'".$_POST['email']."',".$_POST['tipoDeCuenta'].",".$_POST['anio'].")";
+			$consulta="INSERT INTO usuarios VALUES (null,'".$_POST['dni']."','".password_hash($_POST['contrasenia'],1)."','".$_POST['nombre']."','".$_POST['telefono']."','".$_POST['movil']."','".$_POST['email']."',".$_POST['tipoDeCuenta'].",'".$_POST['anio']."')";
 			if(mysql_query($consulta,$idConexion)){
 				$_SESSION['mensaje']="Usuario insertado correctamente";
 				header('Location:../administrarUsuarios.php');
@@ -39,12 +41,11 @@
 			else{
 				$_SESSION['mensaje']=procesarErrores(mysql_errno($idConexion),1);
 				header('Location:../nuevoUsuario.php');
-				//$_SESSION['idError']=mysql_errno($idConexion);
 			}
 		}
 		else{
-			$_SESSION['mensaje']="Hay campos que no son validos";
-			header('Location:../nuevoUsuario.php');
+			$_SESSION['mensaje']= implode("-",$indicesNoValidos);
+			header('Location:../nuevoUsuario.php?cod=1');
 		}
 	}
 	else {

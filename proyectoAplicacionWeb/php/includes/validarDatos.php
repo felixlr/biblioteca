@@ -195,13 +195,31 @@
 
 // FIN validar informacion relativa a los ejemplares
 
-// Funcion sin uso
-	// function validarNuevoUsuario($usuario,$dni,$contrasenia,$contraseniaConf,$correo,$telef,$movil,$anio){
-	// 	if(validarNombre($usuario) AND validarDNI($dni) AND validarCOntrasenia($contrasenia,$contraseniaConf) AND validarCorreo($correo) AND validarTelefonoMovil($telef) AND validarTelefonoMovil($movil) AND validarAnio($anio)){
-	// 		return TRUE;
-	// 	}
-	// 	else{
-	// 		return FALSE;
-	// 	}
-	// }
+// Funciones validar campos formularios
+
+	function camposNoValidosUsuario(&$indicesNoValidos){
+		if(!validarCampoLetras($_POST['nombre'])){
+			$indicesNoValidos[]="Introduzca un nombre valido";
+		}
+		if(!validarDNI($_POST['dni'])){
+			$indicesNoValidos[]="Introduzca un DNI valido";
+		}
+		if(!validarContrasenia($_POST['contrasenia'],$_POST['contraseniaConf'])){
+			$indicesNoValidos[]="La contraseña debe coincidir";
+		}
+		if(!validarCorreo($_POST['email'])){
+			$indicesNoValidos[]="Introduzca un email valido";
+		}
+		if(!validarTelefonoMovil($_POST['telefono'])){
+			$indicesNoValidos[]="Introduzca un teléfono valido";
+		}
+		if(!validarTelefonoMovil($_POST['movil'])){
+			$indicesNoValidos[]="Introduzca un móvil valido";	
+		}
+		if (!validarAnio($_POST['anio'])){
+			$indicesNoValidos[]="Introduzca un año valido";		
+		}
+	}
+
+// FIN Funciones validar campos formularios
 ?>
