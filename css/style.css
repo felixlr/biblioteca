@@ -1,0 +1,204 @@
+/*CSS Header*/
+.container{
+	width: 1200px !important;
+}
+
+#header{
+	background-color: #FFF;
+	height: 80px;
+}
+
+#mainLogo{
+	margin-left: 60px;
+}
+
+/*Prueba Botones*/
+.menu{
+	width: 29.5%;
+	margin-right: 16.3%;
+	float: right;
+}
+
+.textoLogo{
+	text-align: center;
+	font-weight: bold;
+	position: absolute;
+	top: 20px;
+	left: 125px;
+}
+
+.textoLogo p{	
+	color: #848484;
+	margin: 0px;
+	padding: 0px;
+}
+
+#mainMenu{
+	float: right;
+	margin-top:23px;
+}
+
+#mainMenu a:hover{
+	color: #6db4d0;
+}
+
+#mainMenu.nav-pills>li.active>a,
+#mainMenu.nav-pills>li.active>a:hover,
+#mainMenu.nav-pills>li.active>a:focus,
+#mainMenu.nav-pills>li>a:hover{
+	background: none;
+	color: #6db4d0;
+}
+
+#mainMenu.nav-pills>li.active>a,
+#mainMenu.nav-pills>li.active>a:hover,
+#mainMenu.nav-pills>li.active>a:focus{
+	background: none;
+}
+
+#mainMenu.nav .open>a,
+#mainMenu.nav .open>a:hover,
+#mainMenu.nav .open>a:focus{
+	background: none;
+}
+
+.barraDecorativa{
+	height: 10px;
+	background-color: #01A9DB;
+}
+
+.fullwidth{
+	width: 100%;
+}
+
+.linea{
+	height: 2px;
+	background-color: #D8D8D8;
+}
+
+.botonMenuDer{
+	float:right;
+	width: 28%; /*Alinear el boton con el contenido*/
+}
+
+.columna{
+	background-color: blue;
+	border:solid 1px red;
+}
+
+.iconoUserPanel{
+	color: #A4A4A4;
+	font-weight: 1.3em;
+}
+
+/*FIN CSS Header */
+
+/****************************************************/
+
+/*CSS Contenido*/
+th, td{
+	text-align: center;
+}
+
+.fila{
+	padding: 10px 0px;
+	text-align: center;
+}
+
+.filaFooter{
+	padding: 20px 0px;
+}
+
+.categoriasPanel{
+	text-align: center;
+	border: solid 1px #E6E6E6;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.tituloSeccion{
+	text-align: center;
+	color: #58D3F7;
+	margin: 0px;
+	text-shadow: 1px 1px 1px #000;
+}
+
+.tituloBotonCategoria{
+	color: #6E6E6E;
+	text-shadow: 0.5px 0.5px 0.5px #58D3F7;
+}
+
+.barraDecorativaCategoria{
+	height: 10px;
+	background-color: #01A9DB;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.contenido{	
+  background-color: #FAFAFA;
+}
+
+.botonFormulario{
+	width:100%;
+}
+
+.seccionIzq{
+	padding: 0px 10px 0px 15px;
+}
+
+.seccionDer{
+	/*padding-left: 0px;*/
+}
+/*FIN CSS Contenido*/
+
+/*CSS FOOTER*/
+
+/****************************/
+/*STICKY FOOTER*/
+html {
+  position: relative;
+  min-height: 100%;
+  background-color: #FAFAFA;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 62px;
+  background-color: #01A9DB;
+  border-top: solid 2px #D8D8D8;
+}
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.marco{
+	border: solid 1px blue;
+}
+
+.container {
+  width: auto;
+  max-width: 1200px;
+  /*padding: 0 15px;*/
+}
+
+.container .text-muted {
+  /*margin: 20px 0;*/
+}
+/*FIN STICKY FOOTER*/
+/******************************/
+
+.enlacesFooter a{
+	color: #424242;
+}
+
+/*FIN CSS FOOTER*/
