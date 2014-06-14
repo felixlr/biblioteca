@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-06-2014 a las 16:23:11
+-- Tiempo de generación: 14-06-2014 a las 18:41:07
 -- Versión del servidor: 5.6.16
 -- Versión de PHP: 5.5.11
 
@@ -41,8 +41,8 @@ CREATE TABLE IF NOT EXISTS `ejemplares` (
 --
 
 INSERT INTO `ejemplares` (`idEjemplar`, `idLibro`, `estaPrestado`, `localizacion`, `comentariosEjemplares`) VALUES
-(1, 1, 1, 'Departamento Informatica', 'Ejemplar nuevo.'),
-(1, 2, 1, 'Departamento Informatica', 'Nuevo ejemplar'),
+(1, 1, 0, 'Departamento Informatica', 'Ejemplar nuevo.'),
+(1, 2, 0, 'Departamento Informatica', 'Nuevo ejemplar'),
 (1, 3, 1, 'Departamento Informatica', 'Nuevo ejemplar'),
 (2, 1, 0, 'Departamento Informatica', 'Nuevo ejemplar'),
 (2, 3, 0, 'Departamento Informatica', 'Nuevo ejemplar'),
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `historialprestamos` (
   `fechaFin` date NOT NULL,
   `comentariosHistorial` text,
   PRIMARY KEY (`idHistorial`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Volcado de datos para la tabla `historialprestamos`
@@ -73,7 +73,10 @@ CREATE TABLE IF NOT EXISTS `historialprestamos` (
 
 INSERT INTO `historialprestamos` (`idHistorial`, `nombre`, `idUsuario`, `tituloLibro`, `idLibro`, `idEjemplar`, `fechaInicio`, `fechaFin`, `comentariosHistorial`) VALUES
 (4, 'admin', 1, 'IAW', 1, 1, '2014-05-27', '2014-01-03', 'Sin comentarios'),
-(5, 'admin', 1, 'IAW', 1, 2, '2014-06-01', '2014-02-01', '');
+(5, 'admin', 1, 'IAW', 1, 2, '2014-06-01', '2014-02-01', ''),
+(6, 'admin', 1, 'ISO', 3, 2, '2014-06-12', '2014-01-01', ''),
+(7, 'admin', 1, 'IAW', 1, 2, '2014-06-12', '2014-01-01', ''),
+(8, 'admin', 1, 'ASO', 2, 1, '2014-06-01', '2014-01-01', '');
 
 -- --------------------------------------------------------
 
@@ -88,23 +91,39 @@ CREATE TABLE IF NOT EXISTS `libros` (
   `autor` varchar(255) DEFAULT NULL,
   `editorial` varchar(255) DEFAULT NULL,
   `edicion` varchar(255) DEFAULT NULL,
-  `anioPublicacion` int(11) DEFAULT NULL,
+  `anioPublicacion` varchar(4) DEFAULT NULL,
   `comentariosLibros` text,
   `fotoLibro` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idLibro`),
   UNIQUE KEY `tituloLibro` (`tituloLibro`),
   UNIQUE KEY `ISBN` (`ISBN`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Volcado de datos para la tabla `libros`
 --
 
 INSERT INTO `libros` (`idLibro`, `tituloLibro`, `ISBN`, `autor`, `editorial`, `edicion`, `anioPublicacion`, `comentariosLibros`, `fotoLibro`) VALUES
-(1, 'IAW', '7897897897897', 'IAW', 'IAW', 'Primera', 2000, 'IAW', ''),
-(2, 'ASO', '1234567889', 'ASO', 'ASO', 'Primera', 2005, 'ASO', ''),
-(3, 'ISO', '0000000000003', 'ISO', 'ISO', 'Primera', 2010, 'ISO', NULL),
-(5, 'Servicios de Red E Internet', '0000000000005', 'SRI', 'SRI', 'Tercera', 2010, 'SRI\r\n', NULL);
+(1, 'IAW', '7897897897897', 'IAW', 'IAW', 'Primera', '2000', 'IAW', ''),
+(2, 'ASO', '1234567889', 'ASO', 'ASO', 'Primera', '2005', 'ASO', ''),
+(3, 'ISO', '0000000000003', 'ISO', 'ISO', 'Primera', '2010', 'ISO', NULL),
+(5, 'Servicios de Red E Internet', '0000000000005', 'SRI', 'SRI', 'Tercera', '2010', 'SRI\r\n', NULL),
+(9, 'asd', '1000000000007', '', '', '', '', '', 'Lighthouse.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mensajes`
+--
+
+CREATE TABLE IF NOT EXISTS `mensajes` (
+  `idMensaje` int(11) NOT NULL AUTO_INCREMENT,
+  `idEmisor` int(11) NOT NULL,
+  `idReceptor` int(11) NOT NULL,
+  `asunto` varchar(255) NOT NULL,
+  `texto` text NOT NULL,
+  PRIMARY KEY (`idMensaje`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -120,20 +139,19 @@ CREATE TABLE IF NOT EXISTS `prestamos` (
   `fechaInicio` date NOT NULL,
   `fechaFin` date DEFAULT NULL,
   `estaActivo` tinyint(1) NOT NULL,
-  `comentariosPrestamos` text,
+  `confirmado` tinyint(1) DEFAULT NULL,
+  `comentariosPrestamos` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idPrestamo`,`idLibro`,`idEjemplar`),
   KEY `idLibro` (`idLibro`,`idEjemplar`),
   KEY `idUsuario` (`idUsuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `prestamos`
 --
 
-INSERT INTO `prestamos` (`idPrestamo`, `idLibro`, `idEjemplar`, `idUsuario`, `fechaInicio`, `fechaFin`, `estaActivo`, `comentariosPrestamos`) VALUES
-(5, 3, 1, 8, '2014-05-27', NULL, 1, 'Sin comentarios'),
-(6, 1, 1, 8, '2014-06-01', NULL, 1, ''),
-(8, 2, 1, 1, '2014-06-01', NULL, 1, '');
+INSERT INTO `prestamos` (`idPrestamo`, `idLibro`, `idEjemplar`, `idUsuario`, `fechaInicio`, `fechaFin`, `estaActivo`, `confirmado`, `comentariosPrestamos`) VALUES
+(5, 3, 1, 8, '2014-05-27', NULL, 1, 0, 'Sin comentarios');
 
 -- --------------------------------------------------------
 
@@ -174,7 +192,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   PRIMARY KEY (`idUsuario`),
   UNIQUE KEY `dni` (`dni`),
   KEY `idTipoCuenta` (`idTipoCuenta`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -183,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 INSERT INTO `usuarios` (`idUsuario`, `dni`, `contrasenia`, `nombre`, `telefono`, `movil`, `email`, `idTipoCuenta`, `anio`) VALUES
 (1, '54246933F', '$2y$10$aA0po.AC/x3vCqLm9s2i2O7dF8..m7CQLfTws1uROvEfkAYd0Bt5a', 'admin', '911111111', '600000000', 'prueba@prueba.com', 1, '2014'),
 (8, '89209629N', '$2y$10$UCD/rvBT7N5KdF8HL94kKuBXdoXJTgWrCR6p4qrcIhgymwPtmY0F.', 'lucas', '911111111', '600000000', 'ejemplo@gmail.com', 2, '2014'),
-(13, '89833768T', '$2y$10$wUHNbiZx9ZVa5QcBuKOpjuHFyreLPz9ZGK4ROrFFzyp1gJ8itYZLm', 'Luis', '911111111', '600000000', 'ejemplo@gmail.com', 2, '2014');
+(16, '1234568Z', '21232f297a57a5a743894a0e4a801fc3', 'admin', NULL, NULL, NULL, 1, NULL);
 
 --
 -- Restricciones para tablas volcadas
