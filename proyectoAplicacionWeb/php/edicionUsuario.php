@@ -16,12 +16,11 @@
 						<div class="row fila">
 							<h2 class="tituloSeccion">Administrar Usuarios</h2>
 						</div>
-						<div class="row fila">
+						<div class="row">
 							<div class="col-xs-2 seccionIzq">
 								<ul class="nav nav-pills nav-stacked">
 									<li class="active"><a href="administrarUsuarios.php">Administrar Usuarios</a></li>
 									<li><a href="nuevoUsuario.php">Nuevo Usuario</a></li>
-									<li><a href="panelControl.php">Panel de Control</a></li>
 								</ul>
 							</div>
 							<div class="col-xs-10 seccionDer">

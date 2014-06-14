@@ -10,7 +10,7 @@
 				<legend>Alta Prestamo</legend>
 			</div>
 			<div class="form-group">
-				<label for="idLibro" class="col-xs-3 control-label">Libro:</label>
+				<label for="idLibro" class="col-xs-3 control-label">Libro:&nbsp*</label>
 				<div class="col-xs-4">
 					<select name="idLibro" onchange="muestraEjemplar(this.value), obtenUsuarios()" id="idLibro" class="form-control">
 						<option value="">Elija un libro</option>';
@@ -23,7 +23,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="ejemplar" class="col-xs-3 control-label">ID. Ejemplar:</label>
+				<label for="ejemplar" class="col-xs-3 control-label">ID. Ejemplar:&nbsp*</label>
 				<div class="col-xs-4">
 					<select id="ejemplar" name="idEjemplar" class="form-control">
 						<option value="">Elija un ejemplar</option>
@@ -31,7 +31,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="usuarios" class="col-xs-3 control-label">Usuario:</label>
+				<label for="usuarios" class="col-xs-3 control-label">Usuario:&nbsp*</label>
 				<div class="col-xs-4">
 					<select name="idUsuario" id="usuarios" class="form-control">
 						<option value="">Elija un Usuario</option>
@@ -39,13 +39,16 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="comentarios" class="col-xs-3 control-label">Comentarios:</label>
+				<label for="comentarios" class="col-xs-3 control-label">Comentarios:&nbsp&nbsp</label>
 				<div class="col-xs-7">
 					<textarea name="comentarios" class="form-control" rows="3" placeholder="Introduzca un comentario"></textarea>
 				</div>
 			</div>
 			<div class="form-group">
-    			<div class="col-xs-offset-8 col-xs-2">
+				<div class="col-xs-4">
+					<p style="font-size:0.8em;font-style:italic;">Los campos marcados con <strong>(*)</strong> son obligatorios</p>
+				</div>
+    			<div class="col-xs-offset-4 col-xs-2">
       				<button type="submit" class="btn btn-info botonFormulario">Insertar</button>
     			</div>
   			</div>

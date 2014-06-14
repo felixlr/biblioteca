@@ -14,8 +14,10 @@
 	//Buscamos si el usuario existe para darle acceso
 	$encontrado=FALSE;
 	$fila=mysql_fetch_array($datos);
+
 	while($fila!="" && !$encontrado){
-		if($fila['nombre']==$_POST['usuario'] && password_verify($_POST['clave'],$fila['contrasenia'])){
+		if(strtolower($fila['nombre'])==strtolower($_POST['usuario']) && md5($_POST['clave'])==$fila['contrasenia']){
+					
 			$encontrado=TRUE;
 			$_SESSION['usuario']=$_POST['usuario'];
 			$_SESSION['tipoCuenta']=$fila['idTipoCuenta'];

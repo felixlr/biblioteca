@@ -13,7 +13,7 @@
 				<legend>Editar Ejemplar</legend>
 			</div>
 			<div class="form-group">
-				<label for="idLibro" class="col-xs-3 control-label">Libro:</label>
+				<label for="idLibro" class="col-xs-3 control-label">Libro:&nbsp*</label>
 				<div class="col-xs-4">
 					<select id="idLibro" class="form-control" name="idLibro">';
 						while ($fila=mysql_fetch_array($datos1)){
@@ -31,28 +31,30 @@
 	$consulta="SELECT * FROM ejemplares WHERE idLibro='".$_GET['idLibro']."' AND idEjemplar='".$_GET['idEjemplar']."'";
 	$datos2=mysql_query($consulta,$id_conexion);
 	$fila=mysql_fetch_array($datos2);
-
 		echo '
 			<div class="form-group">
-				<label for="idEjemplar" class="col-xs-3 control-label">ID. Ejemplar:</label>
+				<label for="idEjemplar" class="col-xs-3 control-label">ID. Ejemplar:&nbsp*</label>
 				<div class="col-xs-1">
 					<input id="idEjemplar" type="text" class="form-control" name="idEjemplar" value="'.$fila['idEjemplar'].'">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="localizacion" class="col-xs-3 control-label">Localización:</label>
+				<label for="localizacion" class="col-xs-3 control-label">Localización:&nbsp*</label>
 				<div class="col-xs-4">
 					<input id="localizacion" type="text" class="form-control" name="localizacion" value="'.$fila['localizacion'].'">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="comentarios" class="col-xs-3 control-label">Comentarios:</label>
+				<label for="comentarios" class="col-xs-3 control-label">Comentarios:&nbsp&nbsp</label>
 				<div class="col-xs-7">
 					<textarea name="comentarios" class="form-control" rows="3">'.$fila['comentariosEjemplares'].'</textarea>
 				</div>
 			</div>
 			<div class="form-group">
-    			<div class="col-xs-offset-8 col-xs-2">
+				<div class="col-xs-4">
+					<p style="font-size:0.8em;font-style:italic;">Los campos marcados con <strong>(*)</strong> son obligatorios</p>
+				</div>
+    			<div class="col-xs-offset-4 col-xs-2">
       				<button type="submit" class="btn btn-info botonFormulario">Actualizar</button>
     			</div>
   			</div>

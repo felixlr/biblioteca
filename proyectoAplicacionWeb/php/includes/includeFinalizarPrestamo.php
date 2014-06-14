@@ -69,10 +69,10 @@
 					</div>
 				</div>
 				<div class="form-group">
-	    			<div class="col-xs-offset-8 col-xs-2">
-	      				<button type="submit" class="btn btn-info botonFormulario">Finalizar</button>
-	    			</div>
-	  			</div>
+					<div class="col-xs-offset-8 col-xs-2">
+						<button type="submit" class="btn btn-info botonFormulario">Finalizar</button>
+					</div>
+				</div>
 			</fieldset>
 		</form>
 	';

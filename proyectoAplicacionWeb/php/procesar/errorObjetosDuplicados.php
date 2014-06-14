@@ -1,5 +1,5 @@
 <?php
-	//Funcion que devuelve un mensaje si se intenta insertar un elemento que ya existe
+	//Funcion que devuelve un mensaje si se intenta insertar un usuario que ya existe
 	function objetosDuplicados($param){
 		switch ($param){
 			case 1:

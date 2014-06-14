@@ -14,8 +14,8 @@
 
 /*Prueba Botones*/
 .menu{
-	width: 29.5%;
-	margin-right: 16.3%;
+	width: 22.9%;
+	margin-right: 10.9%;
 	float: right;
 }
 
@@ -145,10 +145,11 @@ th, td{
 
 .seccionIzq{
 	padding: 0px 10px 0px 15px;
+	margin-bottom: 10px;
 }
 
 .seccionDer{
-	/*padding-left: 0px;*/
+	margin-bottom: 10px;
 }
 /*FIN CSS Contenido*/
 
@@ -202,3 +203,8 @@ body {
 }
 
 /*FIN CSS FOOTER*/
+
+/*INICIO CSS DATEPICKER*/
+.date-form { margin: 10px; }
+label.control-label span { cursor: pointer; }
+/*FIN CSS DATEPICKER*/

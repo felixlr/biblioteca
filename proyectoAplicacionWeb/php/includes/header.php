@@ -3,7 +3,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-4">
-				<a href="panelControl.php">
+				<a href="panelControl.php?backend=inicio">
 					<div id="mainLogo">
 						<img src="../img/logo.gif" alt="Logo" class="logo">
 					</div>
@@ -13,27 +13,19 @@
 					</div>
 				</a>
 			</div>
-			<div class="col-xs-8">
-				<ul id="mainMenu" class="nav nav-pills">
-					<li><a href="panelControl.php">Panel de Control</a></li>
-					<li><a href="administrarUsuarios.php">Usuarios</a></li>
-					<li><a href="administrarLibros.php">Libros</a></li>
-					<li><a href="administrarEjemplares.php">Ejemplares</a></li>
-					<li><a href="administrarPrestamos.php">Prestamos</a></li>
-					<li><a href="administrarHistorial.php">Historial</a></li>
-					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="150" href="#">
-							<span class="glyphicon glyphicon-user iconoUserPanel"></span>
-							<span class="caret iconoUserPanel"></span>
-						</a>
-						<ul class="dropdown-menu dropdown-menu-right">
-							<li><a href="#">Perfil</a></li>
-							<li><a href="inicio.php">Front-End</a></li>
-							<li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
+			<?php
+				if (isset($_GET['backend'])){
+					if ($_GET['backend']=="inicio"){
+						include('headerInicioPanel.php');
+					}
+					else{
+						include('headerCategorias.php');
+					}
+				}
+				else{
+					include('headerFrontEnd.php');
+				}
+			?>
 		</div>
 	</div>
 </header>

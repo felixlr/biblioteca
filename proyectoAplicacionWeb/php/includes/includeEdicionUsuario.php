@@ -86,7 +86,10 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-xs-offset-8 col-xs-2">
+				<div class="col-xs-4">
+					<p style="font-size:0.8em;font-style:italic;">Los campos marcados con <strong>(*)</strong> son obligatorios</p>
+				</div>
+				<div class="col-xs-offset-4 col-xs-2">
 					<button type="submit" class="btn btn-info botonFormulario">Actualizar</button>
 				</div>
 			</div>

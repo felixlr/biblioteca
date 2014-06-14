@@ -4,12 +4,12 @@
 	<!DOCTYPE html>
 	<html lang="es">
 		<head>
-			<title>Administrar Historial</title>
-			<?php include("includes/estilosPagina.php"); ?>
+			<?php include('includes/estilosPagina.php'); ?>
 		</head>
 		<body>
 			<div class="fullwidth">
-				<?php include('includes/headerCategorias.php'); ?>
+				<?php include('includes/mensajeSistema.php'); ?>
+				<?php include('includes/header.php'); ?>
 				<section class="contenido">
 					<div class="container">
 						<div class="row fila">
@@ -18,48 +18,61 @@
 						<div class="row">
 							<div class="col-xs-2 seccionIzq">
 								<ul class="nav nav-pills nav-stacked">
-									<li class="active"><a href="administrarHistorial.php">Historial de Prestamos</a></li>
-									<li><a href="administrarPrestamos.php">Administrar Prestamos</a></li>
-									<li><a href="panelControl.php">Panel de Control</a></li>
+									<li class="active"><a href="administrarHistorial.php?backend=categorias">Historial de Prestamos</a></li>
+									<li><a href="administrarPrestamos.php?backend=categorias">Administrar Prestamos</a></li>
 								</ul>
 							</div>
 							<div class="col-xs-10 seccionDer">
-								<?php include('includes/includeAdministrarHistorial.php'); ?>
+							<?php
+								include('includes/conectar.php');
+								$idConexion=conectar();
+
+								//Obtengo los usuarios que hay en el historial
+								$consulta="SELECT DISTINCT idUsuario FROM historialprestamos";
+								$datos1=mysql_query($consulta,$idConexion);
+								if(mysql_num_rows($datos1)!=0):
+									while($fila1=mysql_fetch_array($datos1)):
+										//Obtengo el historial de prestamos de cada Usuario de la tabla historialPrestamos
+										$consulta="SELECT * FROM historialprestamos WHERE idUsuario='".$fila1['idUsuario']."' ORDER BY fechaFin DESC";
+										$datos2=mysql_query($consulta,$idConexion);
+							?>
+								<table class="table table-bordered table-hover table-condensed">
+									<thead>
+										<th>Usuario</th>
+										<th>Id.</th>
+										<th>Libro</th>
+										<th>Cod. Ejemplar</th>
+										<th>Inicio Prestamo</th>
+										<th>Fin Prestamo</th>
+										<th>Comentarios</th>
+										<th>Accion</th>
+									</thead>
+									<tbody>
+									<?php while($fila2=mysql_fetch_array($datos2)): ?>
+										<tr>
+											<td><?php echo $fila2['nombre']; ?></td>
+											<td><?php echo $fila2['idUsuario']; ?></td>
+											<td><?php echo $fila2['tituloLibro']; ?></td>
+											<td><?php echo $fila2['idLibro'].".".$fila2['idEjemplar']; ?></td>
+											<td><?php echo $fila2['fechaInicio']; ?></td>
+											<td><?php echo $fila2['fechaFin']; ?></td>
+											<td><?php echo $fila2['comentariosHistorial']; ?></td>
+											<td><a class="btn btn-danger btn-sm" href="procesar/procesarEliminarPrestamo.php?idHistorial=<?php echo $fila2['idHistorial']; ?>" title="Eliminar"><span class="glyphicon glyphicon-trash"></a>
+										</tr>
+									<?php endwhile; ?>
+									</tbody>
+								</table><br/>
+								<?php endwhile;
+								else:
+									echo '<p>No hay historial</p>';								
+								endif; ?>
 							</div>
 						</div>
-						<?php if(isset($_SESSION['mensaje'])): ?>
-							<p>Mensaje: <?php echo $_SESSION['mensaje']; ?></p>
-							<?php unset($_SESSION['mensaje']);
-						endif;
-						?>
 					</div>
 				</section>
-				<footer id="footer">
-					<div class="container">
-						<div class="row filaFooter">
-							<div class="col-xs-6 ">
-								<p style="padding:0px; margin:0px">© Copyright Departamento de Informatica 2014</p>
-							</div>
-							<div class="col-xs-6">
-								<div class="row">
-									<div class="col-xs-9 col-xs-offset-3 text-right">
-										<ul class="list-inline enlacesFooter" style="padding:0px; margin:0px">
-											<li><a href="">Mapa del sitio</a></li> |
-											<li><a href="">Accesibilidad</a></li> |
-											<li><a href="">Contacto</a></li> 
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</footer>
+				<?php include('includes/footer.php'); ?>
 			</div>
-			<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-			<!-- Include all compiled plugins (below), or include individual files as needed -->
-			<script src="../js/bootstrap.min.js"></script>
-			<script src="../js/bootstrap-hover-dropdown.min.js"></script>
+			<?php include('includes/scriptsBootstrap.php'); ?>
 		</body>
 	</html>
 <?php else: header('Location:inicio.php'); endif; ?>
